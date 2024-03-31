@@ -50,7 +50,9 @@ namespace Semenova_Language
         {
             get
             {
-                return Семенова_LanguageEntities.GetContext().ClientService.Where(x=>x.ClientID==this.ID).Max(p=>p.StartTime);
+                
+                return Семенова_LanguageEntities.GetContext().ClientService.Where(x => x.ClientID == this.ID).Max(p => p.StartTime);
+                
             }
         }
     }

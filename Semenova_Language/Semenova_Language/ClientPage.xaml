@@ -18,7 +18,7 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <Image Width="200" Stretch="Uniform" HorizontalAlignment="Center" Grid.RowSpan="9">
+                        <Image Width="200" Stretch="UniformToFill" HorizontalAlignment="Center" Grid.RowSpan="9">
                             <Image.Source>
                                 <Binding Path="PhotoPath">
                                     <Binding.TargetNullValue>
@@ -32,17 +32,25 @@
 
                         
                         <WrapPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" >
-                            <TextBlock Text="{Binding FirstName}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="5" FontSize="24"></TextBlock>
-                            <TextBlock Text="{Binding LastName}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="5" FontSize="24"></TextBlock>
-                            <TextBlock Text="{Binding Patronymic}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="5" FontSize="24"></TextBlock>
+                            <TextBlock Text="{Binding ID, StringFormat=ID: {0}}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0"  Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding FirstName}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding LastName}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding Patronymic}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="5"></TextBlock>
                         </WrapPanel>
-                        <TextBlock Text="{Binding Gender.Name}" HorizontalAlignment="Left" Margin="5" Grid.Row="1" Grid.Column="1"></TextBlock>
-                        <TextBlock Text="{Binding Birthday, StringFormat=Дата рождения: {0} }" HorizontalAlignment="Left" Margin="5" Grid.Row="2" Grid.Column="1"></TextBlock>
-                        <TextBlock Text="{Binding Phone, StringFormat=Телефон: {0}}" HorizontalAlignment="Left" Margin="5" Grid.Row="3" Grid.Column="1"></TextBlock>
-                        <TextBlock Text="{Binding Email, StringFormat=Email: {0}}" HorizontalAlignment="Left" Margin="5" Grid.Row="4" Grid.Column="1"></TextBlock>
-                        <TextBlock Text="{Binding RegistrationDate, StringFormat=Дата добавления: {0}}" HorizontalAlignment="Left" Margin="5" Grid.Row="5" Grid.Column="1"></TextBlock>
-                        <TextBlock Text="{Binding VisitCount, StringFormat=Количество посещений: {0}}" HorizontalAlignment="Left" Margin="5" Grid.Row="6" Grid.Column="1"></TextBlock>
-                        <TextBlock Text="{Binding LastVisitDate, StringFormat=Дата последнего посещения {0}}" HorizontalAlignment="Left" Margin="5" Grid.Row="7" Grid.Column="1"></TextBlock>
+                        <WrapPanel Orientation="Horizontal"  Grid.Row="1" Grid.Column="1">
+                            <TextBlock Text="{Binding Gender.Name, StringFormat=Пол: {0}}" HorizontalAlignment="Left" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding Birthday, StringFormat=Дата рождения: {0} }" HorizontalAlignment="Left" Margin="5"></TextBlock>
+                        </WrapPanel>
+                        <WrapPanel Orientation="Horizontal"   Grid.Row="2" Grid.Column="1">
+                            <TextBlock Text="{Binding Phone, StringFormat=Телефон: {0}}" HorizontalAlignment="Left" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding Email, StringFormat=Email: {0}}" HorizontalAlignment="Left" Margin="5"></TextBlock>
+                        </WrapPanel>
+                        <TextBlock Text="{Binding RegistrationDate, StringFormat=Дата регистрации: {0}}" HorizontalAlignment="Left" Margin="5" Grid.Row="4" Grid.Column="1"></TextBlock>
+                        <WrapPanel Orientation="Horizontal"   Grid.Row="5" Grid.Column="1">
+                            <TextBlock Text="{Binding VisitCount, StringFormat=Количество посещений: {0}}" HorizontalAlignment="Left" Margin="5" ></TextBlock>
+                            <TextBlock Text="{Binding LastVisitDate, StringFormat=Дата последнего посещения {0}}" HorizontalAlignment="Left" Margin="5"></TextBlock>
+                        </WrapPanel>
+                        
 
                         
 
