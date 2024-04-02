@@ -9,7 +9,7 @@
       Title="ClientPage">
 
     <Grid>
-        <ListView Name="ServiceListView" >
+        <ListView Name="ServiceListView" Grid.Row="1" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -50,9 +50,9 @@
                             <TextBlock Text="{Binding VisitCount, StringFormat=Количество посещений: {0}}" HorizontalAlignment="Left" Margin="5" ></TextBlock>
                             <TextBlock Text="{Binding LastVisitDate, StringFormat=Дата последнего посещения {0}}" HorizontalAlignment="Left" Margin="5"></TextBlock>
                         </WrapPanel>
-                        
 
-                        
+
+                        <Button Name="BtnDelete" Content="Удалить" Click="BtnDelete_Click"  Grid.Column="2" Grid.Row="6"/>
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
@@ -68,6 +68,35 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" >
+            <TextBlock Text="Выводить по "/>
+            <ComboBox Name="strCount" Width="100" SelectionChanged="strCount_SelectionChanged">
+                <TextBlock>10</TextBlock>
+                <TextBlock>50</TextBlock>
+                <TextBlock>200</TextBlock>
+                <TextBlock>Все</TextBlock>
+            </ComboBox>
+            <TextBlock Name="TBCount" FontSize="20" VerticalAlignment="Center" Height="25"></TextBlock>
+            <TextBlock Text=" из " VerticalAlignment="Center"/>
+            <TextBlock Name="TBAllRecords" FontSize="20" VerticalAlignment="Center" Height="25"></TextBlock>
+            <Button Name="LeftDirButton" Content="&lt;" Width="20" Height="35" Click="LeftDirButton_Click"></Button>
+            <ListBox FontSize="20" Name="PageListBox" MouseUp="PageListBox_MouseUp">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            </ListBox>
+            <Button Name="RightDirButton" Content="&gt;" Width="20" Height="35" Click="RightDirButton_Click"/>
+        </StackPanel>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+    
 
     </Grid>
 </Page>
