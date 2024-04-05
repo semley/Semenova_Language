@@ -46,7 +46,7 @@ namespace Semenova_Language
         public void Update()
         {
             var currentClient = Семенова_LanguageEntities.GetContext().Client.ToList();
-            /*
+            
             if (SortBox.SelectedIndex == 1)
             {
                 currentClient = currentClient.OrderBy(p => p.FirstName).ToList();
@@ -62,15 +62,15 @@ namespace Semenova_Language
 
             if (FiltrBox.SelectedIndex == 1)
             {
-                currentClient = currentClient.Where(p => p.GenderCode == "1").ToList();
+                currentClient = currentClient.Where(p => p.GenderCode == "ж").ToList();
             }
             else if (FiltrBox.SelectedIndex == 2)
             {
-                currentClient = currentClient.Where(p => p.GenderCode == "0").ToList();
+                currentClient = currentClient.Where(p => p.GenderCode == "м").ToList();
             }
 
             currentClient = currentClient.Where(p => p.LastName.ToLower().Contains(TBoxSearch.Text.ToLower()) || p.FirstName.ToLower().Contains(TBoxSearch.Text.ToLower()) || p.Patronymic.ToLower().Contains(TBoxSearch.Text.ToLower()) || p.Email.ToLower().Contains(TBoxSearch.Text.ToLower()) || p.Phone.Replace("+", "").Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "").ToLower().Contains(TBoxSearch.Text.Replace("+", "").Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "").ToLower())).ToList();
-            */
+            
             TBAllRecords.Text = Семенова_LanguageEntities.GetContext().Client.ToList().Count().ToString();
             TBCount.Text = currentClient.Count().ToString();
 
@@ -229,6 +229,21 @@ namespace Semenova_Language
         private void RightDirButton_Click(object sender, RoutedEventArgs e)
         {
             ChangePage(2, null);
+        }
+
+        private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Update();
+        }
+
+        private void FiltrBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Update();
+        }
+
+        private void SortBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Update();
         }
     }
 }

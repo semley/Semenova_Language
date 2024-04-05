@@ -9,6 +9,34 @@
       Title="ClientPage">
 
     <Grid>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left">
+            <WrapPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                <TextBlock Text="Введите название для поиска" Height="25"/>
+                <TextBox x:Name="TBoxSearch" TextChanged="TBoxSearch_TextChanged" Width="200"/>
+            </WrapPanel>
+            <WrapPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                <TextBlock Text="Выберите пол для фильтра" Height="25" Margin="5"/>
+                <ComboBox x:Name="FiltrBox" Width="210" Height="29" SelectionChanged="FiltrBox_SelectionChanged">
+                    <TextBlock Text="Все"/>
+                    <TextBlock Text="Женский"/>
+                    <TextBlock Text="Мужской"/>
+                </ComboBox>
+            </WrapPanel>
+            <ComboBox x:Name="SortBox" SelectionChanged="SortBox_SelectionChanged" Height="29" Grid.Column="0" >
+                <TextBlock><Run Text="Все"/></TextBlock>
+                <TextBlock><Run Text="По фамилии от А до Я"/></TextBlock>
+                <TextBlock><Run Text="По дате последнего посещения"/></TextBlock>
+                <TextBlock><Run Text="По количеству посещений"/></TextBlock>
+            </ComboBox>
+
+
+
+        </StackPanel>
+
+        
+
+
         <ListView Name="ServiceListView" Grid.Row="1" >
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -38,7 +66,7 @@
                             <TextBlock Text="{Binding Patronymic}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" Margin="5"></TextBlock>
                         </WrapPanel>
                         <WrapPanel Orientation="Horizontal"  Grid.Row="1" Grid.Column="1">
-                            <TextBlock Text="{Binding Gender.Name, StringFormat=Пол: {0}}" HorizontalAlignment="Left" Margin="5"></TextBlock>
+                            <TextBlock Text="{Binding GenderName, StringFormat=Пол: {0}}" HorizontalAlignment="Left" Margin="5"></TextBlock>
                             <TextBlock Text="{Binding Birthday, StringFormat=Дата рождения: {0} }" HorizontalAlignment="Left" Margin="5"></TextBlock>
                         </WrapPanel>
                         <WrapPanel Orientation="Horizontal"   Grid.Row="2" Grid.Column="1">
@@ -92,7 +120,7 @@
         </StackPanel>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="90"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>

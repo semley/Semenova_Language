@@ -56,5 +56,17 @@ namespace Semenova_Language
                     return Семенова_LanguageEntities.GetContext().ClientService.Where(x => x.ClientID == this.ID).Max(p => p.StartTime).ToShortDateString();
             }
         }
+
+        public string GenderName
+        {
+            get
+            {
+                if (GenderCode == "м")
+                {
+                    return "Мужской";
+                }
+                else return "Женский";
+            }
+        }
     }
 }
